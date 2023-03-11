@@ -10,16 +10,17 @@ echo "--------------------"
 hostnamectl
 echo ""
 
-# Display system throughput IOPs
-
-echo "System throughput IOPS:"
-iostat -d -x 1 3
-echo ""
-
 # Display CPU load
 
-echo "CPU Load:"
-htop -n 1 -p $(pgrep -d',' -x -n -v htop)
+echo "CPU Load over the next 30 seconds:"
+for i in {1..6}; do top -bn 1 | grep "^%Cpu" && sleep 5; done
+echo ""
+
+# Display processes using more than 60% of CPU
+
+echo "Processes using more than 60% of CPU"
+echo "--------------------"
+ps aux --sort=-%cpu | awk '{if ($3 > 60.0) print $0}'
 echo ""
 
 # Display system load
@@ -37,7 +38,7 @@ echo ""
 # Display and rogue processes
 
 echo "Rogue Processes:"
-htop
+ps aux | awk '$1!="root"&&$1!="USER"&&$3>=50 { print $0 }'
 echo ""
 
 # Display disk usage
@@ -47,15 +48,16 @@ df -h
 echo ""
 
 # Display network information
-echo "Network Information:"
+echo "Basic Network Information:"
 echo "--------------------"
 ip a
 echo ""
 
-# Display process information
-echo "Process Information:"
-echo "--------------------"
-ps auxf
+# Display system throughput IOPs
+
+echo "System throughput IOPS over 30 seconds:"
+echo "This test will post the IOPs taken every ten seconds over a thirty second duration..."
+iostat -d -m -t -y -N 10 3
 echo ""
 
 # Goodbye message
