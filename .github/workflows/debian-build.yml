@@ -25,6 +25,7 @@ jobs:
         
       - name: Move package to repository 
         run: |
+          git config --global credential.helper store
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
@@ -33,3 +34,6 @@ jobs:
           git add .
           git commit -m "Adding binary to repo"
           git push origin main
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
