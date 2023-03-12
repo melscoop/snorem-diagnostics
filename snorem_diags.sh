@@ -54,9 +54,15 @@ echo ""
 
 # Display CPU load
 
-echo "CPU Load over the next 30 seconds:"
-for i in {1..6}; do top -bn 1 | grep "^%Cpu" && sleep 5; done
-echo ""
+read -p "Enter the interval between each CPU load check in seconds (default 6): " interval
+read -p "Enter the duration of the CPU load check in seconds (default 30): " duration
+
+interval=${interval:-5}
+duration=${duration:-30}
+
+for i in $(seq 1 $((duration / interval))); do
+    top -bn 1 | grep "^%Cpu" && sleep $interval
+done
 
 # Display processes using more than 60% of CPU
 
