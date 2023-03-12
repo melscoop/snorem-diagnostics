@@ -18,6 +18,8 @@ jobs:
             sudo apt update
             sudo apt install dpkg-dev
             chmod 755 ~/Debian/control
+            chmod 755 ~/Debian/DEBIAN/control
+            chmod 755 ~/control            
             dpkg-deb --build ~/Debian
         
 
