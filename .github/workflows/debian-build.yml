@@ -1,0 +1,20 @@
+# creates binary for Debian distro
+
+name: Debian Release
+
+on: release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create binary
+        run: |
+            sudo apt update
+            sudo apt install dpkg-deb
+            dpkg-deb --build ~/Debian
+        
+
