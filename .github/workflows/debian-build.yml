@@ -22,4 +22,14 @@ jobs:
             pwd
             dpkg-deb --root-owner-group --build ../snorem-diagnostics/ .
         
+      - name: Move package to repository 
+        run: |
+          mv ../*.deb .
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
 
+      - name: Commit package to repository
+        run: |
+          git add *.deb
+          git commit -m "Adding binary to repo"
+          git push origin master
