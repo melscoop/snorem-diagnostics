@@ -21,6 +21,6 @@ jobs:
             chmod 755 Debian/control
             echo $PWD
             pwd
-            dpkg-deb --build $PWD
+            dpkg-deb --build Debian/ --control Debian/
         
 
