@@ -18,7 +18,7 @@ jobs:
             sudo apt install dpkg-dev tree
             tree
             ls -lath
-            chmod 755 Debian/DEBIAN/control
+            chmod 755 Debian/control
             dpkg-deb --build .
         
 
