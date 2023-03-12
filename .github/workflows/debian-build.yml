@@ -15,7 +15,9 @@ jobs:
 
       - name: Create binary
         run: |
-            sudo apt install dpkg-dev
+            sudo apt install dpkg-dev tree
+            tree
+            ls -lath
             chmod 755 ~/Debian/DEBIAN/control
             dpkg-deb --build ~/.
         
