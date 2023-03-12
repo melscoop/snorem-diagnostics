@@ -19,6 +19,8 @@ jobs:
             tree
             ls -lath
             chmod 755 Debian/control
-            dpkg-deb --build /
+            echo $PWD
+            pwd
+            dpkg-deb --build $PWD
         
 
