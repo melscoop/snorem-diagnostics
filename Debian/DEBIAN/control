@@ -1,0 +1,6 @@
+Package: Sleepy Snorem Diags 4 Debian
+Version: 1.0.1
+Architecture: amd64
+Maintainer: Your Name melscoop@protonmail.com
+Description: System diagnostics script for Debian
+ This script provides system diagnostics for a Debian system.
