@@ -18,9 +18,8 @@ jobs:
             sudo apt install dpkg-dev tree
             tree
             ls -lath
-            chmod 755 Debian/control
             echo $PWD
             pwd
-            dpkg-deb --build --root-owner-group Debian
+            dpkg-deb --root-owner-group --build ../snorem-diagnostics/ .
         
 
