@@ -1,0 +1,5 @@
+Package: SleepySnoremDiags
+Version: 1.0.1
+Architecture: i386
+Maintainer: Melanie Cooper melscoop@protonmail.com
+Description: Basic system diagnostics for a Debian system.
