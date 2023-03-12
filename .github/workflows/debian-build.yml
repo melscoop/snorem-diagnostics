@@ -18,6 +18,6 @@ jobs:
             sudo apt install dpkg-dev
             chmod 755 ~/Debian/DEBIAN/control
             chmod 755 ~/control            
-            dpkg-deb --build ~/DEBIAN
+            dpkg-deb --build ~/.
         
 
