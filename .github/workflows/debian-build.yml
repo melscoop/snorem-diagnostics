@@ -19,6 +19,6 @@ jobs:
             tree
             ls -lath
             chmod 755 Debian/control
-            dpkg-deb --build .
+            dpkg-deb --build /
         
 
