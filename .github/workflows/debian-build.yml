@@ -16,8 +16,7 @@ jobs:
       - name: Create binary
         run: |
             sudo apt install dpkg-dev
-            chmod 755 ~/control
-            chmod 755 ~/control            
+            chmod 755 ~/Debian/DEBIAN/control
             dpkg-deb --build ~/.
         
 
