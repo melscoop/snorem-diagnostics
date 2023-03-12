@@ -21,15 +21,16 @@ jobs:
             echo $PWD
             pwd
             dpkg-deb --root-owner-group --build ../snorem-diagnostics/ .
+            ls -lath .
         
       - name: Move package to repository 
         run: |
-          mv ../*.deb .
+          mv ../snorem-diagnostics/*.deb .
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Commit package to repository
         run: |
-          git add *.deb
+          git add .
           git commit -m "Adding binary to repo"
           git push origin master
