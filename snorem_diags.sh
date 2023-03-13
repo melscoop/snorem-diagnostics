@@ -103,6 +103,20 @@ echo ""
 
 # Display system throughput IOPs
 
+# Check if the operating system is Debian or CentOS base
+
+if [ -f "/etc/debian_version" ]; then
+  # Update the package list and install required packages
+  sudo apt update
+  sudo apt install sysstat -y
+elif [ -f "/etc/centos-release" ]; then
+  # Install required packages
+  sudo yum install sysstat -y
+else
+  echo "Unsupported operating system."
+  exit 1
+fi
+
 echo "System throughput IOPS over 30 seconds:"
 echo "This test will post the IOPs taken every ten seconds over a thirty second duration..."
 iostat -d -m -t -y -N 10 3
